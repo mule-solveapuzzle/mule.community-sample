@@ -1,6 +1,6 @@
 applications:
 - name: mule-community-test 
-  memory: 1G 
+  memory: 256M 
   instances: 1
   docker:
     image: npiper/community.test  

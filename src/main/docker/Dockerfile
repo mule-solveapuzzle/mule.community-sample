@@ -17,7 +17,7 @@ ENV MULE_HOME=/opt/mule-standalone \
 # Note that the name of this property must match the property name used in the Mule ESB startup script.
     RUN_AS_USER=mule \
 # Set this environment variable to true to set timezone on container start.
-    SET_CONTAINER_TIMEZONE=true \
+    SET_CONTAINER_TIMEZONE=false\
 # Default container timezone.
     CONTAINER_TIMEZONE=Europe/London
 
