@@ -1,0 +1,6 @@
+applications:
+- name: mule-community-test 
+  memory: 1G 
+  instances: 1
+  docker:
+    image:  

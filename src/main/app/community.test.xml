@@ -9,6 +9,7 @@ http://www.mulesoft.org/schema/mule/file http://www.mulesoft.org/schema/mule/fil
 http://www.mulesoft.org/schema/mule/validation http://www.mulesoft.org/schema/mule/validation/current/mule-validation.xsd
 http://www.mulesoft.org/schema/mule/http http://www.mulesoft.org/schema/mule/http/current/mule-http.xsd">
     <http:listener-config name="HTTP_Listener_Configuration" host="0.0.0.0" port="8081" doc:name="HTTP Listener Configuration"/>
+    <http:request-config name="HTTP_Request_Configuration" host="restcountries.eu" port="80" doc:name="HTTP Request Configuration"/>
     <flow name="community.testFlow">
         <file:inbound-endpoint responseTimeout="10000" doc:name="File" moveToDirectory="${staging.dir}" path="${inbound.path}">
             <file:filename-regex-filter pattern=".txt" caseSensitive="false"/>
@@ -19,7 +20,8 @@ http://www.mulesoft.org/schema/mule/http http://www.mulesoft.org/schema/mule/htt
         </catch-exception-strategy>
     </flow>
     <flow name="community.testFlow1">
-        <http:listener config-ref="HTTP_Listener_Configuration" path="/" allowedMethods="GET" doc:name="HTTP"/>
+        <http:listener config-ref="HTTP_Listener_Configuration" path="/countries" allowedMethods="GET" doc:name="HTTP"/>
         <logger level="INFO" doc:name="Logger"/>
+        <http:request config-ref="HTTP_Request_Configuration" path="/rest/v2/all" method="GET" doc:name="HTTP"/>
     </flow>
 </mule>
