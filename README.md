@@ -13,12 +13,20 @@ mvn clean package docker:build
 ## How to run?
 
 ```
-docker run -it -p "8081:8081" -p "1099:1099" community.test bash
->/opt/mule-standalone/bin/mule &
+docker run -d -p 8081:8081 -p 1099:1099 community.test
 ```
 
 ## How to test?
+```
+curl http://localhost:8081/countries
+```
 
-curl http://localhost:8888
+Returns a list of countries
 
-## 
+## Push to docker hub
+
+```
+docker login
+docker tag community.test:latest npiper/community.test:latest
+docker push
+```
