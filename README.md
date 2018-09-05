@@ -30,3 +30,9 @@ docker login
 docker tag community.test:latest npiper/community.test:latest
 docker push
 ```
+
+# References
+
+Cloudfoundry java logging	- Env Var VCAP_APPLICATION value used
+https://github.com/pivotalservices/cloudfoundry-java-logging
+
