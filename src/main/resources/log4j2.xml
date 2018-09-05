@@ -16,12 +16,17 @@
             <SizeBasedTriggeringPolicy size="10 MB" />
             <DefaultRolloverStrategy max="10"/>
         </RollingFile>
+        
+        <Console name="Console" target="SYSTEM_OUT">
+            <PatternLayout pattern="%d [%t] %-5p %c: %m%n"/>
+        </Console>
+        
     </Appenders>
     <Loggers>
     	
     	
 		<!-- Http Logger shows wire traffic on DEBUG -->
-		<AsyncLogger name="org.mule.module.http.internal.HttpMessageLogger" level="WARN"/>
+		<AsyncLogger name="org.mule.module.http.internal.HttpMessageLogger" level="INFO"/>
 	
 		<!-- JDBC Logger shows queries and parameters values on DEBUG -->
 		<AsyncLogger name="com.mulesoft.mule.transport.jdbc" level="WARN"/>
@@ -44,7 +49,8 @@
         <AsyncLogger name="Tracking" level="WARN"/>
         
         <AsyncRoot level="INFO">
-            <AppenderRef ref="file" />
+            <!-- <AppenderRef ref="file" />  -->
+            <AppenderRef ref="Console" />
         </AsyncRoot>
     </Loggers>
 </Configuration>

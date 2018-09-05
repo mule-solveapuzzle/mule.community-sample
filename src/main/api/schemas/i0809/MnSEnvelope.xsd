@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+Revision History
+2.0.0	05.03.15	D Bhattacharya	Updated namespace, removed appinfo
+ Description:
+Message Envelope used for all integration messages.-->
+<xs:schema xmlns:mns="http://www.marksandspencer.com/common/envelope/v2" xmlns:xs="http://www.w3.org/2001/XMLSchema" targetNamespace="http://www.marksandspencer.com/common/envelope/v2" elementFormDefault="unqualified" attributeFormDefault="unqualified" version="2.0.0">
+	<xs:include schemaLocation="MnSHeader.xsd"/>
+	<xs:include schemaLocation="MnSPayload.xsd"/>
+	<xs:element name="MnSDocument">
+		<xs:annotation>
+			<xs:documentation>The MnSDocument is the primary container schema for the common message envelope.  This schema imports the header and payload schema's which are the constitutent parts of the envelope.  Each are imported under their own namespace to enable version management at this lowest level, both absorbing change without impact to the overall CME, and providing flexibility to import business object level data into the payload for validation purposes without impacting the remainder of the envelope.</xs:documentation>
+		</xs:annotation>
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element ref="mns:Header"/>
+				<xs:element ref="mns:Payload"/>
+			</xs:sequence>
+		</xs:complexType>
+	</xs:element>
+</xs:schema>
